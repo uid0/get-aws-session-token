@@ -9,4 +9,4 @@ inputs:
   - name: getsession
 
 run: 
-  path: get-aws-session/ci/test
+  path: getsession/ci/test
