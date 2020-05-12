@@ -1,0 +1,25 @@
+#!/bin/bash
+
+set -e -u
+
+export GOPATH=$PWD/gopath
+export PATH=$PWD/gopath/bin:$PATH
+
+cd get-aws-session
+
+echo "installing dependencies..."
+go install github.com/onsi/ginkgo/ginkgo
+
+function emit_coveralls() {
+  if [ -n "$COVERALLS_TOKEN" ]; then
+    echo "emitting code coverage..."
+    go get github.com/mattn/goveralls
+    goveralls -service concourse \
+      -coverprofile <(find . -name '*.coverprofile' | xargs cat | grep -v 'booklit.peg.go\|render/bindata.go')
+  fi
+}
+
+trap emit_coveralls EXIT
+
+echo "running tests..."
+./ci/testrun -p "$@"
