@@ -1,0 +1,12 @@
+resources:
+- name: getsession
+  type: git
+  source: {uri: "https://github.com/uid0/get-aws-session-token.git"}
+
+jobs:
+- name: unit
+  plan:
+  - get: getsession
+    trigger: true
+  - task: test
+    file: get-aws-session-token/ci/test.yml
