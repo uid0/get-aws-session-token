@@ -6,7 +6,10 @@ image_resource:
   source: {repository: golang}
 
 inputs:
-  - name: getsession
+- name: getsession
+
+params:
+  GIT_BRANCH: master
 
 run: 
   path: getsession/ci/test
