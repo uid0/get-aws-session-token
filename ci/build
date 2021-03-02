@@ -21,9 +21,9 @@ pushd get-aws-session-token
 
     echo "building $os binary..."
     GOOS=$os go build \
-      --ldflags "-X github.com/uid0/get-aws-session-token.Version=${version}" \
-      -o $assets/booklit_${os}_amd64${ext} \
+      -o $assets/get-aws-session-token-${os}_amd64${ext} \
       github.com/uid0/get-aws-session-token
   done
 popd
 
+echo "Version built: $version"
