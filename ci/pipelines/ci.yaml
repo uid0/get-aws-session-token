@@ -14,10 +14,3 @@ jobs:
   - get: get-aws-session-token
   - task: run-build
     file: get-aws-session-token/ci/build.yaml
-- name: unit
-  plan:
-  - get: get-aws-session-token
-    trigger: true
-  - task: build
-    file: get-aws-session-token/ci/build.yml
-
