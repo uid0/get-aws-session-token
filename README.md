@@ -26,7 +26,7 @@ I've got an alias in my `.zshrc` that is:
 `alias -g getaws="get-aws-session-token export --serial-number arn:aws:iam::<IAM>:mfa/uid0 --token-code "` so that if I want a token, I can simply:
 `getaws XXXXXX` and boom.  I've got a token.  
 
-There's an OSX binary for now.  I'll probably build a Linux one over the weekend just to make my life easier.  Bonus points if you have your MFA token in a place where you can do this automatically in your login/initalization cycle, but, doing so is left up  to the exercise of the reader.  
+There's an OSX binary for now.  I'll probably build a Linux one over the weekend just to make my life easier.  Bonus points if you have your MFA token in a place where you can do this automatically in your login/initalization cycle, but, doing so is an exercise left up to the reader.  
 
 ## Output
 
@@ -44,3 +44,7 @@ Don't worry, if you screw it up, it'll tell you the right way to do it.
 
 ### version 0.1
 Initialize `aws-session-token` command.
+
+### version 0.2
+* Create CI pipeline with automatic builds to AWS.
+* adds some really rudimentary bitwarden support

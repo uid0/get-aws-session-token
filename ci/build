@@ -11,14 +11,15 @@ version="0.0.0-dev"
 if [ -d version ]; then
   version="$(cat version/version)"
 fi
+echo "Building version $version"
 
+echo "Building binaries"
 pushd get-aws-session-token
   for os in linux darwin windows; do
     ext=""
     if [ "$os" = "windows" ]; then
       ext=".exe"
     fi
-
     echo "building $os binary..."
     GOOS=$os go build \
       -o $assets/get-aws-session-token-${os}_amd64${ext} \
