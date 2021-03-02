@@ -11,7 +11,7 @@ resource_types:
 
 
 resources:
-- name: getsession
+- name: get-aws-session-token
   type: git
   source: 
     uri: "https://github.com/uid0/get-aws-session-token.git"

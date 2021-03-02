@@ -1,0 +1,25 @@
+---
+
+resources:
+- name: get-aws-session-token
+  type: git
+  source:
+    uri: https://github.com/uid0/get-aws-session-token
+    branch: master
+
+jobs:
+- name: build
+  public: true
+  plan: 
+  - get: get-aws-session-token
+  - task: run-build
+    file: get-aws-session-token/ci/build.yaml
+- name: unit
+  plan:
+  - get: get-aws-session-token
+    trigger: true
+  - task: test
+    file: get-aws-session-token/ci/test.yml
+  - task: build
+    file: get-aws-session-token/ci/build.yml
+

@@ -1,0 +1,20 @@
+---
+platform: linux
+
+image_resource:
+  type: registry-image
+  source: {repository: golang}
+
+inputs:
+- name: get-aws-session-token
+- name: version
+  optional: true
+
+outputs:
+- name: assets
+
+caches:
+- path: gopath/
+
+run:
+  path: get-aws-session-token/ci/build

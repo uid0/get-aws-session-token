@@ -1,0 +1,29 @@
+#!/bin/bash
+
+set -e -u
+
+export GOPATH=$PWD/gopath
+export PATH=$PWD/gopath/bin:$PATH
+
+assets=$PWD/assets
+
+version="0.0.0-dev"
+if [ -d version ]; then
+  version="$(cat version/version)"
+fi
+
+pushd get-aws-session-token
+  for os in linux darwin windows; do
+    ext=""
+    if [ "$os" = "windows" ]; then
+      ext=".exe"
+    fi
+
+    echo "building $os binary..."
+    GOOS=$os go build \
+      --ldflags "-X github.com/uid0/get-aws-session-token.Version=${version}" \
+      -o $assets/booklit_${os}_amd64${ext} \
+      github.com/uid0/get-aws-session-token
+  done
+popd
+
