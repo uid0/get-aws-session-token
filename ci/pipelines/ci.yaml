@@ -18,8 +18,6 @@ jobs:
   plan:
   - get: get-aws-session-token
     trigger: true
-  - task: test
-    file: get-aws-session-token/ci/test.yml
   - task: build
     file: get-aws-session-token/ci/build.yml
 
