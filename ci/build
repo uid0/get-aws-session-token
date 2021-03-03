@@ -26,8 +26,7 @@ pushd get-aws-session-token
     fi
     echo "building $os binary..."
     GOOS=$os go build \
-      -o $assets/get-aws-session-token-${os}_amd64${ext} \
-      github.com/uid0/get-aws-session-token
+      -o $assets/get-aws-session-token-${os}_amd64${ext}
   done
 popd
 
