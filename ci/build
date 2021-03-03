@@ -15,6 +15,7 @@ echo "Building version $version"
 
 echo "Building binaries"
 pushd get-aws-session-token
+  go mod init get-aws-session-token
   go mod tidy
   for os in linux darwin windows; do
     ext=""
